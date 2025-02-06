@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ansh - AI/ML Portfolio</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* === Base Styles === */
+    :root {
+      --primary-color: #2563eb;
+      /* Modern blue */
+      --dark-color: #1e40af;
+      /* Darker blue */
+      --light-bg: #f8fafc;
+      /* Off-white background */
+      --text-dark: #1e293b;
+      /* Dark text color */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* === Header Styles === */
+    .main-header {
+      background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+      height: 55vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 2rem;
+    }
+
+    .header-content {
+      max-width: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .profile-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    /* 
+    .profile-img:hover {
+      transform: scale(1.05);
+    } */
+    .profile-img:hover {
+      transform: scale(1.05);
+    }
+
+    .header-title {
+      font-size: 2.8rem;
+      color: white;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .header-subtitle {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 300;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* editssssssss */
+
+    @media (max-width: 1024px) {
+      .main-header {
+        height: 50vh;
+      }
+
+      .nav-links {
+        top: 15px;
+        right: 10px;
+        gap: 1.5rem;
+      }
+
+      .profile-img {
+        width: 160px;
+        height: 160px;
+      }
+
+      .header-title {
+        font-size: 2.5rem;
+      }
+
+      .header-subtitle {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .main-header {
+        height: auto;
+        padding: 3rem 1rem;
+      }
+
+      .nav-links {
+        flex-direction: row;
+        position: relative;
+        top: auto;
+        right: auto;
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      .header-content {
+        text-align: center;
+      }
+
+      .profile-img {
+        width: 140px;
+        height: 140px;
+      }
+
+      .header-title {
+        font-size: 2.2rem;
+      }
+
+      .header-subtitle {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-header {
+        padding: 2rem 1rem;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      .profile-img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .header-title {
+        font-size: 2rem;
+      }
+
+      .header-subtitle {
+        font-size: 1rem;
+      }
+    }
+
+
+
+    /* editsssss end */
+
+
+
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(-30px);
+      }
+
+      60% {
+        transform: translateY(-15px);
+      }
+    }
+
+    /* === About Section === */
+    .about-section {
+      padding: 4rem 0;
+      background-color: white;
+    }
+
+    .about-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 2.5rem;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-dark);
+      opacity: 0.9;
+    }
+
+    .skills-grid {
+      display: grid;
+      border-radius: 40px;
+      box-shadow: 0px 0px 100px rgb(39 50 232 / 71%);
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--light-bg);
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      transition: transform 1.3s cubic-bezier(0, 1, 0.55, 0.5);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .skill-icon {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .skill-card h3 {
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-card p {
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      opacity: 0.8;
+    }
+
+    /* === Projects Section === */
+    .projects-section {
+      background-color: var(--light-bg);
+    }
+
+    .projects-section h2 {
+      font-size: 2.5rem;
+      color: var(--text-dark);
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-card h3 {
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+
+    .project-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-dark);
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-item {
+      background: var(--light-bg);
+      color: var(--primary-color);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .project-link {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .project-link:hover {
+      color: var(--dark-color);
+    }
+
+    /* === Contact Section === */
+    .contact-section {
+      padding: 3rem 0;
+      background-color: white;
+    }
+
+    .contact-section h2 {
+      font-size: 2.5rem;
+      color: var(--text-dark);
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-size: 1rem;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 0.8rem;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .contact-form button {
+      background: var(--primary-color);
+      color: white;
+      padding: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background: var(--dark-color);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .contact-info h3 {
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p {
+      font-size: 1rem;
+      color: var(--text-dark);
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: space-evenly;
+      gap: 1rem;
+    }
+
+    .social-link {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-link:hover {
+      color: var(--dark-color);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .about-container {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header class="main-header">
+    <nav class="nav-links">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <div class="header-content">
+      <img src="profile.jpg" alt="Ansh Kapoor" class="profile-img">
+      <h1 class="header-title">Ansh Kapoor</h1>
+      <p class="header-subtitle">AI/ML Specialist & Tech Innovator</p>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-container">
+        <!-- About Text -->
+        <div class="about-text">
+          <h2>About Me</h2>
+          <p>
+            A passionate AI/ML developer pursuing B.Tech in Artificial Intelligence at Maharshi Dayanand University.
+            Specializing in deep learning and data analysis, I bridge theoretical concepts with practical solutions.
+            My work spans medical imaging analysis to financial risk modeling, driven by curiosity and commitment
+            to technological advancement.
+          </p>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="skills-grid">
+          <div class="skill-card">
+            <i class="fas fa-brain skill-icon"></i>
+            <h3>AI/ML Development</h3>
+            <p>Building intelligent systems using TensorFlow and Scikit-learn. Experienced in fine-tuning models and leveraging cloud platforms like Azure ML for innovative AI solutions.</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-chart-line skill-icon"></i>
+            <h3>Data Analysis</h3>
+            <p>Expert in uncovering patterns with data visualization, statistical modeling, and predictive analytics to optimize workflows.</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-code skill-icon"></i>
+            <h3>Programming</h3>
+            <p>Proficient in Python for AI/ML applications, with additional experience in Java and R for building scalable solutions.</p>
+          </div>
+          <div class="skill-card">
+            <i class="fa-solid fa-microchip skill-icon"></i>
+            <h3>AI-Powered Solutions</h3>
+            <p>Skilled in training and deploying advanced models to enhance decision-making and improve operational efficiency.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects-section">
+    <!-- This below thing is second container in my main code -->
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <h3>Brain Tumor Segmentation</h3>
+          <p>Developed a U-Net model for MRI scan segmentation, achieving 92% accuracy on the BraTS2020 dataset.</p>
+          <div class="tech-stack">
+            <span class="tech-item">Python</span>
+            <span class="tech-item">TensorFlow</span>
+            <span class="tech-item">U-Net</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ratals/Brain-Tumor-Segmentation" target="_blank" class="project-link">
+              <i class="fab fa-github"></i>View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <h3>Emotion Detection</h3>
+          <p>Built a real-time emotion detection system using CNN and OpenCV, deployed with Gradio.</p>
+          <div class="tech-stack">
+            <span class="tech-item">Python</span>
+            <span class="tech-item">OpenCV</span>
+            <span class="tech-item">Gradio</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ratals/Emotion-Detection" target="_blank" class="project-link">
+              <i class="fab fa-github"></i>View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <h3>Credit Risk Modeling</h3>
+          <p>Created an ML model for loan default prediction using XGBoost and Random Forest.</p>
+          <div class="tech-stack">
+            <span class="tech-item">Python</span>
+            <span class="tech-item">XGBoost</span>
+            <span class="tech-item">Flask</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ratals/Credit-Risk-Modeling-Using-Machine-Learning" target="_blank"
+              class="project-link">
+              <i class="fab fa-github"></i>View on GitHub
+            </a>
+          </div>
+        </div>
+        <!-- Project 4 -->
+        <!-- <div class="project-card">
+          <h3>Credit Risk Modeling</h3>
+          <p>Created an ML model for loan default prediction using XGBoost and Random Forest.</p>
+          <div class="tech-stack">
+            <span class="tech-item">Python</span>
+            <span class="tech-item">XGBoost</span>
+            <span class="tech-item">Flask</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ratals/Credit-Risk-Modeling-Using-Machine-Learning" target="_blank"
+              class="project-link">
+              <i class="fab fa-github"></i>View on GitHub
+            </a>
+          </div>
+        </div> -->
+
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2>Get in Touch</h2>
+
+      <div class="contact-info">
+        <p style="text-align: center;">Feel free to reach out to me for collaborations, opportunities, or just a
+          friendly chat!</p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/ansh-kapoor-a153a8222/" target="_blank" class="social-link">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/ratals" target="_blank" class="social-link">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="mailto:anshk12317@gmail.com" target="_blank" class="social-link">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>
